@@ -10,9 +10,27 @@ public class Boundary
 }
 
 public class PlayerController : MonoBehaviour {
+
     public float speed;//variable that controls the speed in which the ship moves
     public Boundary boundary;//instance of the class Boundary
     public float tilt;//variable for controlling the tilt of the ship
+    public GameObject shot;
+    public float nextFire,fireRate;
+    public Transform shotSpawn;
+
+    void Update()
+    {
+        
+
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+
+        }
+
+    }
+
     void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");//both variables used to control the ship
