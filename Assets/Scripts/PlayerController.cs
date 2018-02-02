@@ -34,9 +34,11 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
+        /*
         float moveHorizontal = Input.GetAxis("Horizontal");//both variables used to control the ship
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);//a vector 3 to control the movement in the x and y axis
+        float moveVertical = Input.GetAxis("Vertical");*/
+        Vector3 acceleration = Input.acceleration;
+        Vector3 movement = new Vector3 (acceleration.x,0.0f,acceleration.y);//a vector 3 to control the movement in the x and y axis
 
         GetComponent<Rigidbody>().velocity = movement * speed;//here the velocity component from rigidbody gets assigned values
         GetComponent<Rigidbody>().position = new Vector3(Mathf.Clamp(GetComponent<Rigidbody>().position.x,boundary.xMin, boundary.xMax),0.0f,Mathf.Clamp(GetComponent<Rigidbody>().position.z, boundary.zMin, boundary.zMax));
